@@ -16,9 +16,9 @@ minimal: false             # use a dark header
 # Menu
 
 navigation:                # accepts {file, title, url, icon, sidebaricon}
-  - {title:"Home", url:"https://bhargavsanketi.github.io/"}
-  - {file: "sanketi_cv.pdf", title:"CV"}
-  - {file: "sanketi_cv.pdf", title:"CV"}
+  - {title:"Research projects", url:"https://bhargavsanketi.github.io/"}
+  - {file: "/sanketi_cv.pdf", title:"CV"}
+
 
 external:                  # shows a footer with social links - for available icons see fontawesome.com/icons
   - {title: Mail, icon: envelope, url: "mailto:bds245@cornell.edu"}
