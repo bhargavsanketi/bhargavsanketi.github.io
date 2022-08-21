@@ -27,7 +27,7 @@ navigation:                # accepts {file, title, url, icon, sidebaricon}
 external:                  # shows a footer with social links - for available icons see fontawesome.com/icons
   - {title: Mail, icon: envelope, url: "mailto:bds245@cornell.edu"}
   - {title: Twitter, icon: twitter, url: "https://twitter.com/BSanketi"}
-  - {title: Pubmed, icon: <i class="fa-solid fa-book-open-cover"></i>, url: "https://pubmed.ncbi.nlm.nih.gov/?term=Sanketi%2C+Bhargav+%5BAuthor%5D&sort=pubdate"}
+  - {title: Pubmed, icon: fa-book-open-cover, url: "https://pubmed.ncbi.nlm.nih.gov/?term=Sanketi%2C+Bhargav+%5BAuthor%5D&sort=pubdate"}
 
 remote_theme: niklasbuschmann/contrast@v2.11
 
