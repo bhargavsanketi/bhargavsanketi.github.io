@@ -16,6 +16,7 @@ minimal: false             # use a dark header
 # Menu
 
 navigation:                # accepts {file, title, url, icon, sidebaricon}
+  - {file: "index.html"}
   - {url: "/sanketi_cv.pdf", title: "CV"}
   - {file: "research_projects.html", title: "Research projects"}
   - {file: "outreach.html", title: "Outreach"}
@@ -27,9 +28,7 @@ external:                  # shows a footer with social links - for available ic
   - {title: Twitter, icon: twitter, url: "https://twitter.com/BSanketi"}
   - {title: Pubmed, icon: books, url: "https://pubmed.ncbi.nlm.nih.gov/?term=Sanketi%2C+Bhargav+%5BAuthor%5D&sort=pubdate"}
 
-comments:
-#  disqus_shortname: ""    # see https://disqus.com/
-#  isso_domain: ""         # see https://posativ.org/isso/
+remote_theme: niklasbuschmann/contrast@v2.11
 
 plugins:
  - jekyll-feed
