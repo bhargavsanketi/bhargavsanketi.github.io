@@ -11,7 +11,7 @@ date_format: "%B %d, %Y"
 
 show_excerpts: false       # show article excerpts on the home page
 show_frame: true           # adds a gray frame to the site
-show_sidebar: false        # show a sidebar instead of the usual header
+show_sidebar: true        # show a sidebar instead of the usual header
 minimal: false             # use a dark header
 
 # Menu
@@ -27,7 +27,7 @@ navigation:                # accepts {file, title, url, icon, sidebaricon}
 external:                  # shows a footer with social links - for available icons see fontawesome.com/icons
   - {title: Mail, icon: envelope, url: "mailto:bds245@cornell.edu"}
   - {title: Twitter, icon: twitter, url: "https://twitter.com/BSanketi"}
-  - {title: Pubmed, icon: fa-book-open-cover, url: "https://pubmed.ncbi.nlm.nih.gov/?term=Sanketi%2C+Bhargav+%5BAuthor%5D&sort=pubdate"}
+  - {title: Pubmed, icon: book, url: "https://pubmed.ncbi.nlm.nih.gov/?term=Sanketi%2C+Bhargav+%5BAuthor%5D&sort=pubdate"}
 
 remote_theme: niklasbuschmann/contrast@v2.11
 
