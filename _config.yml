@@ -16,15 +16,16 @@ minimal: false             # use a dark header
 # Menu
 
 navigation:                # accepts {file, title, url, icon, sidebaricon}
-  - {file: "/sanketi_cv.pdf", title: "CV"}
-  - {file: "index.html", title: "Research projects"}
+  - {file: "sanketi_cv.pdf", title: "CV"}
+  - {file: "research_projects.html", title: "Research projects"}
+  - {file: "outreach.html", title: "Outreach"}
  
 
 
 external:                  # shows a footer with social links - for available icons see fontawesome.com/icons
   - {title: Mail, icon: envelope, url: "mailto:bds245@cornell.edu"}
   - {title: Twitter, icon: twitter, url: "https://twitter.com/BSanketi"}
-  - {title: Pubmed, icon: books-medical, url: "https://pubmed.ncbi.nlm.nih.gov/?term=Sanketi%2C+Bhargav+%5BAuthor%5D&sort=pubdate"}
+  - {title: Pubmed, icon: books, url: "https://pubmed.ncbi.nlm.nih.gov/?term=Sanketi%2C+Bhargav+%5BAuthor%5D&sort=pubdate"}
 
 comments:
 #  disqus_shortname: ""    # see https://disqus.com/
