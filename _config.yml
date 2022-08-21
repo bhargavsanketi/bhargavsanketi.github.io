@@ -14,20 +14,21 @@ show_frame: true           # adds a gray frame to the site
 show_sidebar: true        # show a sidebar instead of the usual header
 minimal: false             # use a dark header
 
+
 # Menu
 
 navigation:                # accepts {file, title, url, icon, sidebaricon}
   - {file: "index.html"}
-  - {url: "/sanketi_cv.pdf", title: "CV"}
-  - {file: "research_projects.html", title: "Research projects"}
-  - {file: "outreach.html", title: "Outreach"}
+  - {url: "/sanketi_cv.pdf", title: "CV", icon: user}
+  - {file: "research_projects.html", title: "Research projects", icon: clipboard}
+  - {file: "outreach.html", title: "Outreach", icon: hand-spock-o}
  
 
 
 external:                  # shows a footer with social links - for available icons see fontawesome.com/icons
   - {title: Mail, icon: envelope, url: "mailto:bds245@cornell.edu"}
   - {title: Twitter, icon: twitter, url: "https://twitter.com/BSanketi"}
-  - {title: Pubmed, icon: book, url: "https://pubmed.ncbi.nlm.nih.gov/?term=Sanketi%2C+Bhargav+%5BAuthor%5D&sort=pubdate"}
+  - {title: Pubmed, icon: university, url: "https://pubmed.ncbi.nlm.nih.gov/?term=Sanketi%2C+Bhargav+%5BAuthor%5D&sort=pubdate"}
 
 remote_theme: niklasbuschmann/contrast@v2.11
 
