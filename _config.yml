@@ -19,9 +19,9 @@ show_sidebar: true        # show a sidebar instead of the usual header
 
 navigation:                # accepts {file, title, url, icon, sidebaricon}
   - {file: "index.html", title: "Home", icon: home}
-  - {title: "CV", url: "/sanketi_cv.pdf", icon: newspaper}
+  - {title: "CV", url: "/sanketi_cv.pdf", icon: clipboard-user}
   - {file: "research_projects.html", title: "Research projects", icon: project-diagram}
-  - {file: "outreach.html", title: "Outreach", icon: spock}
+  - {file: "outreach.html", title: "Outreach", icon: peace}
  
 
 
