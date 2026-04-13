@@ -1,19 +1,33 @@
+// ═══════════════════════════════════════════════════════
+// NOIR BIOTECH — Utility Classes
+// ═══════════════════════════════════════════════════════
+
 .title
-  font-size: 1.25em
+  font-size: 1.1em
+  font-family: "Space Grotesk", sans-serif
+  font-weight: 700
+  letter-spacing: 0.08em
+  text-transform: uppercase
+  color: $accent-cyan
+  text-shadow: $glow-sm
 
 .more
   margin: 2em 0 1em
 
 .more a
-  border-radius: 2px
-  border: 1.5px solid $link-color
-  padding: .4em .8em
-  transition: .2s background, .2s color
-
-.more a:hover
-  color: #fff
-  background: $link-color
-  text-decoration: inherit
+  border-radius: 3px
+  border: 1px solid $accent-cyan
+  padding: .45em .9em
+  font-size: 0.82em
+  letter-spacing: 0.1em
+  text-transform: uppercase
+  color: $accent-cyan
+  transition: all $transition-base
+  &:hover
+    color: $dark
+    background: $accent-cyan
+    box-shadow: $glow-sm
+    text-decoration: none
 
 .archive
   font-size: 1.1em
@@ -23,6 +37,9 @@
   min-width: 10ch
   min-height: 1.75em
   margin: 0 .2em
+  font-family: "JetBrains Mono", monospace
+  color: $muted
+  font-size: 0.88em
 
 .icon
   height: 1em
@@ -33,7 +50,7 @@
   margin-bottom: .15em
 
 a:hover .icon
-  color: reduce(100)
+  color: $accent-cyan
 
 .full table
   display: table
@@ -55,15 +72,15 @@ a:hover .icon
     margin: 0 1.5em 0 .25em
     opacity: .5
 
-.highlight // https://github.com/richleland/pygments-css/blob/master/monokai.css <http://unlicense.org>
+.highlight // Monokai-inspired for dark theme
   pre
-    background: rgba(lighten($dark, 6%), 0.9)
-    color: white
+    background: $surface
+    color: $light
+    border-left: 3px solid $accent-green
   .c
-    color: #a29f90
+    color: #75715e
   .err
-    color: #960050
-    background-color: #1e0010
+    color: #f92672
   .k
     color: #66d9ef
   .l
@@ -138,3 +155,100 @@ a:hover .icon
     color: #f92672
   .gi
     color: #a6e22e
+
+// ─── NOIR BIOTECH UTILITIES ─────────────────────────────
+
+// "Specimen card" — research / project sections
+.specimen-card
+  background: $surface
+  border: 1px solid $border-col
+  border-top: 2px solid $accent-cyan
+  border-radius: 4px
+  padding: 1.75em 2em
+  margin: 1.5em 0
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(0, 212, 232, 0.04)
+  position: relative
+  &::before
+    content: 'SPECIMEN'
+    position: absolute
+    top: -0.65em
+    left: 1.5em
+    background: $surface
+    color: $accent-cyan
+    font-family: "JetBrains Mono", monospace
+    font-size: 0.62em
+    letter-spacing: 0.18em
+    padding: 0 0.6em
+
+// Monospace case label
+.case-file
+  font-family: "JetBrains Mono", monospace
+  font-size: 0.72em
+  letter-spacing: 0.12em
+  text-transform: uppercase
+  color: $accent-cyan
+  opacity: 0.85
+  display: block
+  margin-bottom: 0.5em
+
+// Section label — uppercase tracking, muted
+.section-label
+  font-family: "Space Grotesk", sans-serif
+  font-size: 0.72em
+  letter-spacing: 0.16em
+  text-transform: uppercase
+  color: $muted
+  margin-bottom: 0.75em
+  display: block
+
+// Profile image — noir treatment
+.profile-photo
+  border-radius: 4px
+  border: 1px solid rgba(0, 212, 232, 0.3)
+  box-shadow: $glow-md, 0 8px 32px rgba(0, 0, 0, 0.6)
+  filter: contrast(1.05) brightness(0.95) saturate(0.88)
+  transition: box-shadow 0.4s ease, filter 0.4s ease
+  &:hover
+    box-shadow: $glow-lg, 0 8px 32px rgba(0, 0, 0, 0.6)
+    filter: contrast(1.08) brightness(1.0) saturate(1.0)
+
+// Animated status indicator
+.status-dot
+  display: inline-block
+  width: 0.45em
+  height: 0.45em
+  border-radius: 50%
+  background: $accent-green
+  box-shadow: 0 0 6px $accent-green, 0 0 12px rgba(57, 255, 20, 0.4)
+  margin-right: 0.45em
+  vertical-align: middle
+  animation: pulse-status 2.5s ease-in-out infinite
+
+@keyframes pulse-status
+  0%, 100%
+    box-shadow: 0 0 4px $accent-green, 0 0 8px rgba(57, 255, 20, 0.4)
+    opacity: 1
+  50%
+    box-shadow: 0 0 10px $accent-green, 0 0 20px rgba(57, 255, 20, 0.5)
+    opacity: 0.85
+
+// Bioluminescent horizontal rule variant
+.bio-rule
+  border: none
+  height: 1px
+  background: linear-gradient(90deg, transparent 0%, $accent-cyan 50%, transparent 100%)
+  opacity: 0.35
+  margin: 2em 0
+  box-shadow: $glow-sm
+
+// Data / monospace text
+.data
+  font-family: "JetBrains Mono", monospace
+  font-size: 0.88em
+  color: $accent-green
+  letter-spacing: 0.03em
+
+// Glow text — for hero display
+.glow-text
+  color: $accent-cyan
+  text-shadow: $glow-md

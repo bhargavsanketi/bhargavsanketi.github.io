@@ -1,6 +1,11 @@
+// ═══════════════════════════════════════════════════════
+// NOIR BIOTECH — Base Element Styles
+// Always dark — no light mode fallback
+// ═══════════════════════════════════════════════════════
+
 body
-  background: $light
-  color: $dark
+  background: $dark
+  color: $light
   font-family: $font-family
   font-weight: $font-weight
   font-size: $font-size
@@ -11,86 +16,143 @@ body
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
 
-@media (prefers-color-scheme: dark)
-  body
-    background: $dark
-    color: $light
-
+// Headings
 h1, h2, h3, h4, h5, h6
+  font-family: "Space Grotesk", "Rajdhani", sans-serif
   font-weight: $heading-weight
+
+h1
+  letter-spacing: -0.025em
+  color: $light
+  text-shadow: $glow-sm
+
+h2
+  letter-spacing: -0.015em
+  color: $accent-cyan
+  text-shadow: 0 0 12px rgba(0, 212, 232, 0.3)
+  border-bottom: 1px solid $border-col
+  padding-bottom: 0.35em
+
+h3
+  letter-spacing: 0.04em
+  text-transform: uppercase
+  font-size: 1em
+  color: rgba($light, 0.85)
 
 b, strong, th
   font-weight: $font-weight + 200
 
 p
-  text-align: justify
+  text-align: left
 
+// Links
 a
   color: $link-color
-  text-decoration: inherit
+  text-decoration: none
+  transition: color $transition-base, text-shadow $transition-base
   &:hover
-    text-decoration: underline
+    color: lighten($accent-cyan, 12%)
+    text-shadow: $glow-sm
+    text-decoration: none
 
 header a, footer a, aside a
   color: inherit
 
 header time
-  color: reduce(100)
+  color: $muted
 
+// Horizontal rule — noir section divider
 hr
-  border: 1px solid reduce(30)
-  margin: 2em 0
+  border: none
+  border-top: 1px solid $border-col
+  margin: 2.5em 0
+  position: relative
+  &::after
+    content: '◆'
+    position: absolute
+    top: -0.65em
+    left: 50%
+    transform: translateX(-50%)
+    background: $dark
+    padding: 0 0.6em
+    color: $accent-cyan
+    font-size: 0.65em
+    letter-spacing: 0.1em
 
+// Article separators
 article:not(:last-of-type)
-  border-bottom: 1px solid reduce(14)
+  border-bottom: 1px solid $border-col
 
+// Blockquote — "field notes" panel
 blockquote
-  background: reduce(6)
-  border-left: 3px solid reduce(90)
-  padding: 1px 1.5em
-  opacity: .75
+  background: $surface
+  border-left: 3px solid $accent-cyan
+  padding: 0.8em 1.5em 0.8em 1.75em
+  margin: 1.5em 0
+  box-shadow: inset 3px 0 0 rgba(0, 212, 232, 0.2)
+  opacity: 0.9
+  color: rgba($light, 0.8)
+  font-style: italic
 
 blockquote, figure
   margin: 1em 0
 
+// Images — noir treatment
 img
-  margin: .5em 0
+  margin: 0.5em 0
+  border-radius: 3px
+  max-width: 100%
+  height: auto
+  filter: contrast(1.04) saturate(0.88)
 
 li
   margin: .25em 0
 
-img
-  border-radius: 2px
-  max-width: 100%
-  height: auto
-
+// Tables — data readout aesthetic
 table
   display: inline-block
   max-width: 100%
   overflow-y: scroll
-  border-spacing: 1px
-  border-radius: 2px
-  box-shadow: 0 0 0 1px reduce(12) inset
+  border-spacing: 0
+  border-radius: 4px
+  border: 1px solid $border-col
+  box-shadow: $glow-sm
 
-th, td
+th
+  background: $surface
+  color: $accent-cyan
+  font-family: "JetBrains Mono", "SF Mono", "Fira Code", monospace
+  font-size: 0.78em
+  letter-spacing: 0.08em
+  text-transform: uppercase
+  padding: .6em 1em
+  border-bottom: 2px solid rgba(0, 212, 232, 0.4)
+
+td
   padding: .5em 1em
-  box-shadow: 0 0 0 1px reduce(12)
+  border-bottom: 1px solid $border-col
 
-tr:hover, tr:nth-child(odd) td
-  background: reduce(4)
+tr:hover td
+  background: cyan-tint(0.05)
 
+// Code blocks — terminal readout
 pre
-  background: reduce(12)
-  border-radius: 2px
-  font-size: .8em
+  background: $surface
+  border: 1px solid $border-col
+  border-left: 3px solid $accent-green
+  border-radius: 4px
+  font-size: .82em
   margin: 1.5em 0
-  padding: .8em 1.2em
+  padding: 1em 1.4em
   overflow-x: auto
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.4)
 
 \:not(pre) > code
-  font-size: .9em
-  background: reduce(15)
-  opacity: .7
-  border-radius: 2px
+  font-size: .88em
+  font-family: "JetBrains Mono", "SF Mono", "Fira Code", monospace
+  background: $surface-2
+  color: $accent-cyan
+  border: 1px solid $border-col
+  border-radius: 3px
   margin: 0 .1em
-  padding: .2em .4em
+  padding: .15em .4em

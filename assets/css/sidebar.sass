@@ -3,6 +3,7 @@
 
 @import index
 
+// ─── Base layout when sidebar is active (70em+) ───────
 html
   padding: 0
 
@@ -17,39 +18,111 @@ body > header, body > footer
 
 body > article
   margin: 0 5em
-  padding: 2em 0
-  max-width: 50em
+  padding: 3em 0
+  max-width: 52em
 
+// ─── THE SIDEBAR — control panel ──────────────────────
 aside
   display: block!important
   position: fixed
   overflow: auto
-  background: darken($dark, 2%)
-  color: #fff
-  padding: 2.25em
-  width: 12em
+  // Deep gradient — top slightly lighter for depth
+  background: linear-gradient(180deg, #0d1018 0%, #070b10 60%, #090d14 100%)
+  color: $light
+  padding: 2.5em 1.75em
+  width: 13em
   top: 0
   bottom: 0
   left: 0
+  // Viewport frame border — bioluminescent right edge
+  border-right: 1px solid rgba(0, 212, 232, 0.2)
+  box-shadow: 4px 0 30px rgba(0, 212, 232, 0.06), inset -1px 0 0 rgba(0, 212, 232, 0.08)
+  // Dot-matrix grid overlay
+  background-image: linear-gradient(180deg, #0d1018 0%, #070b10 60%, #090d14 100%), radial-gradient(circle, rgba(0, 212, 232, 0.04) 1px, transparent 1px)
+  background-size: cover, 22px 22px
+  // Scanline texture overlay
+  &::before
+    content: ''
+    position: absolute
+    inset: 0
+    background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0, 212, 232, 0.012) 3px, rgba(0, 212, 232, 0.012) 4px)
+    pointer-events: none
+    z-index: 0
+
+// Site title in sidebar
+aside .title
+  position: relative
+  z-index: 1
+  display: block
+  margin-bottom: 2.25em
+  font-family: "Space Grotesk", sans-serif
+  font-weight: 700
+  font-size: 1.05em
+  letter-spacing: 0.1em
+  text-transform: uppercase
+  color: $accent-cyan
+  text-shadow: $glow-sm
+  line-height: 1.3
 
 article header h1
   font-size: 2em
 
+// Nav container
 nav
-  margin: 0 -2.25em
+  margin: 0 -1.75em
+  position: relative
+  z-index: 1
 
+// Nav links — control panel buttons
 nav a
-  display: block
+  display: flex
+  align-items: center
   margin: 0
-  padding: .5em 2.25em
+  padding: .6em 1.75em
+  font-size: 0.82em
+  letter-spacing: 0.07em
+  text-transform: uppercase
+  color: rgba(221, 232, 245, 0.6)
+  transition: all $transition-base
+  border-left: 2px solid transparent
+  &:hover
+    color: $accent-cyan
+    background: rgba(0, 212, 232, 0.06)
+    border-left-color: $accent-cyan
+    text-shadow: 0 0 8px rgba(0, 212, 232, 0.4)
+    text-decoration: none
+  &.selected
+    color: $accent-cyan
+    background: rgba(0, 212, 232, 0.08)
+    border-left-color: $accent-cyan
+    text-shadow: $glow-sm
 
-nav a:hover, nav a.selected
-  background: lighten($dark, 2%)
-  text-decoration: inherit
-
+// Icons in sidebar
 .icon
-  margin-right: 1.2em
+  margin-right: 1em
   color: inherit!important
+  opacity: 0.65
+  transition: opacity $transition-base
 
+nav a:hover .icon,
+nav a.selected .icon
+  opacity: 1
+
+// Sidebar description / tagline
 .description
-  margin: 2em 0
+  position: relative
+  z-index: 1
+  margin: 2.5em 0 1em
+  font-size: 0.72em
+  letter-spacing: 0.04em
+  color: $muted
+  line-height: 1.55
+  border-top: 1px solid $border-col
+  padding-top: 1.5em
+  // Code-comment visual treatment
+  &::before
+    content: '// '
+    color: $accent-green
+    font-family: "JetBrains Mono", monospace
+    font-size: 0.9em
+    opacity: 0.9

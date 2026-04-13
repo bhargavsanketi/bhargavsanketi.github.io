@@ -1,11 +1,42 @@
-$font-size: calc(0.8rem + 0.2vw) !default
-$font-weight: 400 !default
-$font-family: "PT Sans", -apple-system, "Helvetica Neue", "Segoe UI", "Roboto", sans-serif !default
-$heading-weight: 600 !default
-$line-height: 1.6 !default
-$link-color: #68f !default
-$dark: #212228 !default
-$light: #ffffff !default
+// ═══════════════════════════════════════════════════════
+// NOIR BIOTECH — Design Tokens
+// Bhargav D. Sanketi · Personal Site
+// ═══════════════════════════════════════════════════════
 
-@function reduce ($percent)
+// Typography
+$font-size: calc(0.85rem + 0.15vw) !default
+$font-weight: 400 !default
+$font-family: "Space Grotesk", -apple-system, "Helvetica Neue", "Segoe UI", sans-serif !default
+$heading-weight: 700 !default
+$line-height: 1.65 !default
+
+// Core palette — noir biotech
+$dark: #070b10 !default           // near-void dark background
+$surface: #0f1520 !default        // card / panel surface
+$surface-2: #171f2e !default      // raised surface
+$border-col: #1c2438 !default     // subtle structural lines
+$light: #dde8f5 !default          // off-white body text
+$muted: #5a6882 !default          // secondary / muted text
+
+// Bioluminescent accent system
+$accent-cyan: #00d4e8 !default    // primary accent — electric cyan
+$accent-green: #39ff14 !default   // secondary — neon green
+$accent-purple: #b44fff !default  // tertiary — bio-purple
+
+// Semantic aliases
+$link-color: $accent-cyan !default
+
+// Glow constants
+$glow-sm: 0 0 8px rgba(0, 212, 232, 0.4) !default
+$glow-md: 0 0 16px rgba(0, 212, 232, 0.35), 0 0 32px rgba(0, 212, 232, 0.15) !default
+$glow-lg: 0 0 20px rgba(0, 212, 232, 0.5), 0 0 60px rgba(0, 212, 232, 0.2) !default
+
+// Transition
+$transition-base: 0.25s cubic-bezier(0.4, 0, 0.2, 1) !default
+
+// Utility functions
+@function reduce($percent)
   @return rgba(mix($dark, $light), $percent / 100)
+
+@function cyan-tint($alpha)
+  @return rgba(0, 212, 232, $alpha)

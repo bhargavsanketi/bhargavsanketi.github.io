@@ -3,26 +3,39 @@
 
 @import index, font, basic, layout, classes
 
+// ─── Responsive padding ────────────────────────────────
 @media (min-width: 40em)
   body > header, body > article, body > footer
     padding: 1.75em calc(40% - 17em)
 
-{% if site.minimal %}
+// ─── Dot-matrix background ────────────────────────────
+// Subtle radial gradient creates a lab-display grid
+body
+  background-image: radial-gradient(circle, rgba(0, 212, 232, 0.05) 1px, transparent 1px)
+  background-size: 28px 28px
 
+// ─── Header — always dark, cyan underline ─────────────
 body > header
-  background: $dark
+  background: $surface
   color: $light
-  border-bottom: 1px solid reduce(14)
+  border-bottom: 1px solid rgba(0, 212, 232, 0.25)
+  box-shadow: 0 2px 24px rgba(0, 212, 232, 0.07)
 
-{% else %}
+body > header a.title
+  font-family: "Space Grotesk", sans-serif
+  font-weight: 700
+  font-size: 1.1em
+  letter-spacing: 0.07em
+  text-transform: uppercase
+  color: $accent-cyan
+  text-shadow: $glow-sm
 
-body > header
-  box-shadow: 0 0 .6em rgba($dark, 0.04)
-  border-bottom: 1px solid reduce(14)
-
-{% endif %}
-
+// ─── Footer ───────────────────────────────────────────
 body > footer
-  box-shadow: 0 0 .6em rgba($dark, 0.04) inset
-  border-top: 1px solid reduce(14)
-  opacity: .9
+  background: $surface
+  border-top: 1px solid $border-col
+  color: $muted
+  font-size: 0.85em
+  letter-spacing: 0.02em
+  box-shadow: none
+  opacity: 1
