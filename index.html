@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#070b10">
+  <meta name="author" content="Bhargav Sanketi">
+  <meta name="description" content="Senior Scientist at Altos Labs — longevity, cellular reprogramming, tissue homeostasis.">
+  <title>Bhargav D. Sanketi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Rajdhani:wght@600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+  <style>
+    /* ── Reset ─────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── Design tokens ─────────────────────────── */
+    :root {
+      --bg:           #070b10;
+      --surface:      #0f1520;
+      --surface-2:    #171f2e;
+      --border:       #1c2438;
+      --text:         #dde8f5;
+      --text-muted:   #5a6882;
+      --cyan:         #00d4e8;
+      --cyan-dim:     rgba(0, 212, 232, 0.12);
+      --cyan-glow:    rgba(0, 212, 232, 0.35);
+      --green:        #39ff14;
+      --glow-sm:      0 0 8px rgba(0,212,232,0.4);
+      --glow-md:      0 0 16px rgba(0,212,232,0.35), 0 0 32px rgba(0,212,232,0.15);
+      --font-body:    'Space Grotesk', -apple-system, sans-serif;
+      --font-head:    'Rajdhani', 'Space Grotesk', sans-serif;
+      --font-mono:    'JetBrains Mono', 'SF Mono', monospace;
+      --sidebar-w:    220px;
+      --transition:   0.25s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    /* ── Base ──────────────────────────────────── */
+    html { height: 100%; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      line-height: 1.65;
+      min-height: 100%;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--cyan);
+      text-decoration: none;
+      transition: color var(--transition), text-shadow var(--transition);
+    }
+    a:hover {
+      color: #33dfef;
+      text-shadow: var(--glow-sm);
+    }
+
+    /* ── Layout ────────────────────────────────── */
+    .layout {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* ── Sidebar ───────────────────────────────── */
+    .sidebar {
+      position: fixed;
+      top: 0; left: 0; bottom: 0;
+      width: var(--sidebar-w);
+      background: linear-gradient(180deg, #0d1018 0%, #070b10 70%);
+      border-right: 1px solid rgba(0,212,232,0.18);
+      box-shadow: 4px 0 30px rgba(0,212,232,0.05);
+      display: flex;
+      flex-direction: column;
+      padding: 2.5rem 1.75rem;
+      overflow: hidden;
+      z-index: 100;
+    }
+
+    /* dot-grid texture */
+    .sidebar::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(0,212,232,0.04) 1px, transparent 1px);
+      background-size: 22px 22px;
+      pointer-events: none;
+    }
+
+    /* scanlines texture */
+    .sidebar::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 3px,
+        rgba(0,212,232,0.012) 3px,
+        rgba(0,212,232,0.012) 4px
+      );
+      pointer-events: none;
+    }
+
+    .sidebar-inner {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .site-title {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 1.15rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      text-shadow: var(--glow-sm);
+      line-height: 1.25;
+      margin-bottom: 2.5rem;
+      display: block;
+    }
+
+    nav {
+      margin: 0 -1.75rem;
+    }
+
+    nav a {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.6rem 1.75rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(221,232,245,0.6);
+      border-left: 2px solid transparent;
+      transition: all var(--transition);
+    }
+    nav a:hover {
+      color: var(--cyan);
+      background: rgba(0,212,232,0.06);
+      border-left-color: var(--cyan);
+      text-shadow: var(--glow-sm);
+    }
+    nav a svg {
+      width: 0.9em;
+      height: 0.9em;
+      flex-shrink: 0;
+      opacity: 0.65;
+      transition: opacity var(--transition);
+    }
+    nav a:hover svg { opacity: 1; }
+
+    .sidebar-desc {
+      margin-top: auto;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .sidebar-desc::before {
+      content: '// ';
+      color: var(--green);
+      font-family: var(--font-mono);
+    }
+
+    /* External / social links */
+    .external-links {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 1.25rem;
+      margin-bottom: 0.25rem;
+      flex-wrap: wrap;
+    }
+    .external-links a {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      transition: color var(--transition);
+    }
+    .external-links a:hover {
+      color: var(--cyan);
+      text-shadow: none;
+    }
+    .external-links svg {
+      width: 0.85em;
+      height: 0.85em;
+    }
+
+    /* ── Main content ───────────────────────────── */
+    .main {
+      margin-left: var(--sidebar-w);
+      flex: 1;
+      padding: 3.5rem 4rem;
+      max-width: 820px;
+    }
+
+    /* ── Bio section ───────────────────────────── */
+    .bio-grid {
+      display: grid;
+      grid-template-columns: 1fr 240px;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .status-line {
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .status-dot {
+      display: inline-block;
+      width: 0.45em;
+      height: 0.45em;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 6px var(--green), 0 0 12px rgba(57,255,20,0.4);
+      flex-shrink: 0;
+      animation: pulse 2.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 4px var(--green), 0 0 8px rgba(57,255,20,0.4); }
+      50%       { box-shadow: 0 0 10px var(--green), 0 0 20px rgba(57,255,20,0.5); }
+    }
+
+    .bio-text p {
+      margin-bottom: 1.2rem;
+      font-size: 1rem;
+    }
+    .bio-text p:last-child { margin-bottom: 0; }
+
+    .research-tags {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      opacity: 0.8;
+      margin-top: 1.75rem;
+      line-height: 1.9;
+    }
+
+    .profile-photo {
+      width: 100%;
+      max-width: 240px;
+      border-radius: 4px;
+      border: 1px solid rgba(0,212,232,0.3);
+      box-shadow: var(--glow-md), 0 8px 32px rgba(0,0,0,0.6);
+      filter: contrast(1.05) brightness(0.95) saturate(0.88);
+      transition: box-shadow 0.4s ease, filter 0.4s ease;
+      display: block;
+    }
+    .profile-photo:hover {
+      box-shadow: 0 0 20px rgba(0,212,232,0.5), 0 0 60px rgba(0,212,232,0.2), 0 8px 32px rgba(0,0,0,0.6);
+      filter: contrast(1.08) brightness(1.0) saturate(1.0);
+    }
+
+    /* ── Mobile ─────────────────────────────────── */
+    @media (max-width: 900px) {
+      .sidebar {
+        position: static;
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        padding: 1.25rem 1.5rem;
+        border-right: none;
+        border-bottom: 1px solid rgba(0,212,232,0.18);
+        gap: 1rem;
+      }
+      .site-title { margin-bottom: 0; }
+      nav { margin: 0; display: flex; flex-wrap: wrap; gap: 0.25rem; }
+      nav a { padding: 0.4rem 0.75rem; border-left: none; border-bottom: 2px solid transparent; }
+      nav a:hover { border-left-color: transparent; border-bottom-color: var(--cyan); }
+      .sidebar-desc { display: none; }
+      .external-links { margin: 0; }
+      .layout { flex-direction: column; }
+      .main { margin-left: 0; padding: 2rem 1.5rem; }
+    }
+
+    @media (max-width: 600px) {
+      .bio-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .profile-photo {
+        max-width: 160px;
+        margin: 0 auto;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="layout">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+      <a href="/" class="site-title">Bhargav D<br>Sanketi</a>
+
+      <nav>
+        <a href="/">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          Home
+        </a>
+        <a href="/sanketi_cv.pdf" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          CV
+        </a>
+      </nav>
+
+      <div class="external-links">
+        <a href="mailto:bhargav.d.sanketi@gmail.com" title="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Mail
+        </a>
+        <a href="https://twitter.com/BSanketi" target="_blank" rel="noopener" title="Twitter">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
+          Twitter
+        </a>
+      </div>
+
+      <div class="sidebar-desc">Senior Scientist · Altos Labs · Longevity &amp; Cellular Reprogramming</div>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="main">
+    <div class="bio-grid">
+      <div class="bio-text">
+        <p class="status-line">
+          <span class="status-dot"></span>
+          Currently active &mdash; Altos Labs, San Diego
+        </p>
+
+        <p>I am a senior scientist at <a href="http://altoslabs.com/" target="_blank" rel="noopener">Altos Labs</a>, where I study how aging and fibrosis erode tissue homeostasis &mdash; and explore cellular reprogramming as a strategy to reverse that decline.</p>
+
+        <p>I hold a Ph.D. in Cell Biology from Cornell University and an undergraduate degree in Biotechnology Engineering from RV College of Engineering, India.</p>
+
+        <p>I am drawn to the systems-level precision with which living organisms are built: the molecular programs that establish structure, maintain function, and eventually fail. My work asks whether those programs can be read, interrupted, and rewritten.</p>
+
+        <p class="research-tags">
+          aging &nbsp;&middot;&nbsp; fibrosis &nbsp;&middot;&nbsp; tissue homeostasis<br>
+          cellular reprogramming &nbsp;&middot;&nbsp; intestinal morphogenesis
+        </p>
+      </div>
+
+      <div>
+        <img src="sanketi_photo.jpg" alt="Bhargav Sanketi" class="profile-photo">
+      </div>
+    </div>
+  </main>
+
+</div>
+</body>
+</html>
