@@ -16,6 +16,10 @@ const LINKEDIN = 'https://www.linkedin.com/in/bhargavdsanketi';
 const X = 'https://twitter.com/BSanketi';
 const EMAIL = 'bhargav.d.sanketi@gmail.com';
 
+const crypto = require('crypto');
+// Content hash query string, so a changed file gets a new URL and skips stale caches.
+const v = (rel) => `/${rel}?v=${crypto.createHash('sha1').update(fs.readFileSync(path.join(root, rel))).digest('hex').slice(0, 8)}`;
+
 const esc = (s) => String(s)
   .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
@@ -73,8 +77,8 @@ function figure(m) {
     return `
       <figure class="figure reveal">
         <div class="figure__frame">
-          <video class="js-loop" muted loop playsinline preload="metadata" poster="/${esc(m.poster)}" width="${m.width}" height="${m.height}" aria-label="${esc(m.alt)}">
-            <source src="/${esc(m.src)}" type="video/mp4">
+          <video class="js-loop" muted loop playsinline preload="metadata" poster="${v(m.poster)}" width="${m.width}" height="${m.height}" aria-label="${esc(m.alt)}">
+            <source src="${v(m.src)}" type="video/mp4">
           </video>
           <button class="play" type="button" hidden>Play</button>
         </div>
@@ -85,8 +89,8 @@ function figure(m) {
       <figure class="figure reveal">
         <div class="figure__frame">
           <picture>
-            <source type="image/webp" srcset="/${esc(m.webp)}">
-            <img src="/${esc(m.src)}" width="${m.width}" height="${m.height}" alt="${esc(m.alt)}" loading="lazy" decoding="async">
+            <source type="image/webp" srcset="${v(m.webp)}">
+            <img src="${v(m.src)}" width="${m.width}" height="${m.height}" alt="${esc(m.alt)}" loading="lazy" decoding="async">
           </picture>
         </div>
         ${caption}
@@ -130,7 +134,7 @@ function head({ title, description, url, jsonld = '' }) {
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="/assets/fonts/newsreader-opsz.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/source-sans-3.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/css/site.css">
+  <link rel="stylesheet" href="${v('assets/css/site.css')}">
   <script>document.documentElement.classList.add('js')</script>${jsonld}
 </head>`;
 }
@@ -206,8 +210,8 @@ const home = `${head({
   <main id="main" class="wrap">
     <header class="masthead">
       <picture>
-        <source type="image/webp" srcset="/assets/img/portrait.webp">
-        <img class="portrait" src="/assets/img/portrait.jpg" width="480" height="480" alt="Bhargav D Sanketi crouching in a field of orange poppies with his beagle">
+        <source type="image/webp" srcset="${v('assets/img/portrait.webp')}">
+        <img class="portrait" src="${v('assets/img/portrait.jpg')}" width="480" height="480" alt="Bhargav D Sanketi crouching in a field of orange poppies with his beagle">
       </picture>
       <h1 class="name">Bhargav D <span class="nowrap">Sanketi<span class="name__suffix">, PhD</span></span></h1>
       <p class="tagline">How tissues build themselves. How they break. How to rewrite them.</p>
