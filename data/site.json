@@ -1,0 +1,199 @@
+{
+  "publications": [
+    {
+      "id": "huang-2026-biorxiv",
+      "year": 2026,
+      "title": "A non-canonical role for Notch3 in building the intestinal lymphatic niche",
+      "authors": ["Huang", "Sanketi", "Mantri", "Chen", "Wang", "Tran", "De Vlaminck", "Kurpios"],
+      "venue": "bioRxiv",
+      "doi": "10.64898/2026.08.13.742813",
+      "chapter": "building",
+      "order": 2
+    },
+    {
+      "id": "kirkland-2026-jcs",
+      "year": 2026,
+      "title": "Visualizing the epigenetic landscape of aging and cellular reprogramming: optimized ATAC-see for cells and tissues",
+      "authors": ["Kirkland", "Castro", "Yang", "Sanketi", "Jaber", "Lamas-Alverez", "Malhotra", "Izpisua Belmonte", "Muñoz-Cánoves", "Levine"],
+      "venue": "Journal of Cell Science",
+      "doi": "10.1242/jcs.264943",
+      "chapter": "breaking",
+      "order": 2
+    },
+    {
+      "id": "sanketi-2025-arcdb",
+      "year": 2025,
+      "title": "Morphogenesis of the vertebrate intestine: from form to function",
+      "authors": ["Sanketi", "Huang", "Kurpios"],
+      "venue": "Annual Review of Cell and Developmental Biology",
+      "doi": "10.1146/annurev-cellbio-101123-044600",
+      "chapter": "building",
+      "order": 1
+    },
+    {
+      "id": "lu-2025-cell",
+      "year": 2025,
+      "title": "Prevalent mesenchymal drift in aging and disease is reversed by partial reprogramming",
+      "authors": ["Lu", "Tu", "Li", "Weng", "Sanketi", "Yuan", "Reddy", "Rodriguez Esteban", "Izpisua Belmonte"],
+      "venue": "Cell",
+      "doi": "10.1016/j.cell.2025.07.031",
+      "chapter": "breaking",
+      "order": 1
+    },
+    {
+      "id": "sanketi-2024-devcell",
+      "year": 2024,
+      "title": "Villus myofibroblasts are developmental and adult progenitors of mammalian gut lymphatic musculature",
+      "authors": ["Sanketi", "Mantri", "Huang", "Tavallaei", "Hu", "Wang", "De Vlaminck", "Kurpios"],
+      "venue": "Developmental Cell",
+      "doi": "10.1016/j.devcel.2024.03.005",
+      "chapter": "building",
+      "order": 3
+    },
+    {
+      "id": "sanketi-2023-starprotocols",
+      "year": 2023,
+      "title": "Visualizing and manipulating the production and accumulation of hyaluronan for functional assessment in chicken embryos",
+      "authors": ["Sanketi", "Sivakumar", "Kurpios"],
+      "venue": "STAR Protocols",
+      "doi": "10.1016/j.xpro.2023.102200",
+      "chapter": null
+    },
+    {
+      "id": "shiroor-2023-emboreports",
+      "year": 2023,
+      "title": "Inhibition of the ATM kinase rescues planarian regeneration after lethal radiation",
+      "authors": ["Shiroor", "Wang", "Sanketi", "Tapper", "Adler"],
+      "venue": "EMBO Reports",
+      "doi": "10.15252/embr.202256112",
+      "chapter": null
+    },
+    {
+      "id": "sanketi-2022-science",
+      "year": 2022,
+      "title": "Pitx2 patterns an accelerator-brake mechanical feedback through latent TGFβ to rotate the gut",
+      "authors": ["Sanketi", "Zuela-Sopilniak", "Bundschuh", "Gopal", "Hu", "Long", "Lammerding", "Hopyan", "Kurpios"],
+      "venue": "Science",
+      "doi": "10.1126/science.abl3921",
+      "chapter": "building",
+      "order": 4
+    },
+    {
+      "id": "sanketi-2022-mmb-gut",
+      "year": 2022,
+      "title": "In ovo gain- and loss-of-function approaches to study gut morphogenesis",
+      "authors": ["Sanketi", "Kurpios"],
+      "venue": "Methods in Molecular Biology",
+      "doi": "10.1007/978-1-0716-2035-9_11",
+      "chapter": null
+    },
+    {
+      "id": "sanketi-2022-mmb-vascular",
+      "year": 2022,
+      "title": "Avian embryos as a model to study vascular development",
+      "authors": ["Sanketi", "Kurpios"],
+      "venue": "Methods in Molecular Biology",
+      "doi": "10.1007/978-1-0716-2035-9_12",
+      "chapter": null
+    },
+    {
+      "id": "chen-2022-biorxiv",
+      "year": 2022,
+      "title": "The long noncoding RNA Playrr regulates Pitx2 dosage and protects against cardiac arrhythmias",
+      "authors": ["Chen", "Oxford", "Chou", "Li", "Leach", "Perry", "Sanketi", "Cong", "Kupiec-Weglinski", "Dubowitz", "Daugherity", "Martin", "Danko", "Kurpios"],
+      "venue": "bioRxiv",
+      "doi": "10.1101/2022.09.20.508562",
+      "chapter": null
+    },
+    {
+      "id": "hu-2021-cellreports",
+      "year": 2021,
+      "title": "The asymmetric Pitx2 gene regulates gut muscular-lacteal development and protects against fatty liver disease",
+      "authors": ["Hu", "Mahadevan", "Elysee", "Choi", "Souchet", "Bae", "Taboada", "Sanketi", "Duhamel", "Sevier", "Tao", "Kurpios"],
+      "venue": "Cell Reports",
+      "doi": "10.1016/j.celrep.2021.110030",
+      "chapter": "building",
+      "order": 5
+    },
+    {
+      "id": "funk-2020-evodevo",
+      "year": 2020,
+      "title": "Changes in Nkx2.1, Sox2, Bmp4, and Bmp16 expression underlying the lung-to-gas bladder evolutionary transition in ray-finned fishes",
+      "authors": ["Funk", "Breen", "Sanketi", "Kurpios", "McCune"],
+      "venue": "Evolution & Development",
+      "doi": "10.1111/ede.12354",
+      "chapter": null
+    },
+    {
+      "id": "reddy-2016-pisc",
+      "year": 2016,
+      "title": "Corrosion inhibition of mild steel by Capsicum annuum fruit paste",
+      "authors": ["Reddy", "Sanketi", "Narendra Kumar"],
+      "venue": "Perspectives in Science",
+      "doi": "10.1016/j.pisc.2016.06.033",
+      "chapter": null
+    },
+    {
+      "id": "sanketi-2016-jerd",
+      "year": 2016,
+      "title": "Enhancement of Spirulina platensis growth using coconut-water-supplemented media",
+      "authors": ["Sanketi", "Kothari", "Reddy Manjunatha"],
+      "venue": "Journal of Environmental Research and Development",
+      "doi": null,
+      "chapter": null
+    },
+    {
+      "id": "shenoy-2016-rrjobt",
+      "year": 2016,
+      "title": "Immobilization of carbonic anhydrase: a review",
+      "authors": ["Shenoy", "Shree Padma", "Sanketi", "Sumathra"],
+      "venue": "Research & Reviews: A Journal of Biotechnology",
+      "doi": null,
+      "chapter": null
+    }
+  ],
+
+  "inPreparation": [
+    { "title": "Spatiotemporal reconstruction of intestinal lymphatic heterogeneity", "chapter": "building" },
+    { "title": "Umbilical origin of the ventral body wall", "chapter": "building" },
+    { "title": "Uncoupling chromatin rejuvenation from dedifferentiation during partial reprogramming", "chapter": "breaking" },
+    { "title": "Respecifying cell identity in the liver", "chapter": "breaking" },
+    { "title": "Respecifying cell identity in muscle", "chapter": "breaking" }
+  ],
+
+  "media": [
+    {
+      "chapter": "building",
+      "type": "image",
+      "src": "assets/media/sanketi-2022-science.png",
+      "webp": "assets/media/sanketi-2022-science.webp",
+      "width": 1280,
+      "height": 840,
+      "alt": "Heat maps of tissue stiffness in the dorsal mesentery of three chick embryos at stage 18. The left side reads stiffer than the right.",
+      "caption": "The left side of the dorsal mesentery stiffens before the gut begins to tilt.",
+      "credit": "Sanketi et al. (2022)"
+    },
+    {
+      "chapter": "building",
+      "type": "video",
+      "src": "assets/media/sanketi-2024-dev-cell.mp4",
+      "poster": "assets/media/sanketi-2024-dev-cell-poster.jpg",
+      "width": 640,
+      "height": 480,
+      "alt": "Three dimensional rotation of a single intestinal villus. Its central lymphatic vessel is wrapped in smooth muscle.",
+      "caption": "A single intestinal villus turning in three dimensions, its lymphatic vessel wrapped in the smooth muscle that pumps it.",
+      "credit": "Sanketi et al. (2024)"
+    },
+    {
+      "chapter": "breaking",
+      "type": "image",
+      "src": "assets/media/lu-2025-cell.jpg",
+      "webp": "assets/media/lu-2025-cell.webp",
+      "width": 1280,
+      "height": 728,
+      "alt": "Diagram of the human body naming the diseases that show mesenchymal drift. They span the brain, eye, lungs, heart, blood vessels, liver, kidney, colon, skin, and cancer.",
+      "caption": "The same drift toward a mesenchymal state turns up in more than forty human diseases, across every major organ.",
+      "credit": "Lu et al. (2025)"
+    }
+  ]
+}

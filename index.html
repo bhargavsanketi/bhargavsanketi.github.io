@@ -1,375 +1,236 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#070b10">
-  <meta name="author" content="Bhargav Sanketi">
-  <meta name="description" content="Senior Scientist at Altos Labs — longevity, cellular reprogramming, tissue homeostasis.">
-  <title>Bhargav D. Sanketi</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Rajdhani:wght@600;700&family=JetBrains+Mono:wght@400;500&display=swap">
-  <style>
-    /* ── Reset ─────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    /* ── Design tokens ─────────────────────────── */
-    :root {
-      --bg:           #070b10;
-      --surface:      #0f1520;
-      --surface-2:    #171f2e;
-      --border:       #1c2438;
-      --text:         #dde8f5;
-      --text-muted:   #5a6882;
-      --cyan:         #00d4e8;
-      --cyan-dim:     rgba(0, 212, 232, 0.12);
-      --cyan-glow:    rgba(0, 212, 232, 0.35);
-      --green:        #39ff14;
-      --glow-sm:      0 0 8px rgba(0,212,232,0.4);
-      --glow-md:      0 0 16px rgba(0,212,232,0.35), 0 0 32px rgba(0,212,232,0.15);
-      --font-body:    'Space Grotesk', -apple-system, sans-serif;
-      --font-head:    'Rajdhani', 'Space Grotesk', sans-serif;
-      --font-mono:    'JetBrains Mono', 'SF Mono', monospace;
-      --sidebar-w:    220px;
-      --transition:   0.25s cubic-bezier(0.4,0,0.2,1);
-    }
-
-    /* ── Base ──────────────────────────────────── */
-    html { height: 100%; }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--font-body);
-      font-size: 1rem;
-      line-height: 1.65;
-      min-height: 100%;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    a {
-      color: var(--cyan);
-      text-decoration: none;
-      transition: color var(--transition), text-shadow var(--transition);
-    }
-    a:hover {
-      color: #33dfef;
-      text-shadow: var(--glow-sm);
-    }
-
-    /* ── Layout ────────────────────────────────── */
-    .layout {
-      display: flex;
-      min-height: 100vh;
-    }
-
-    /* ── Sidebar ───────────────────────────────── */
-    .sidebar {
-      position: fixed;
-      top: 0; left: 0; bottom: 0;
-      width: var(--sidebar-w);
-      background: linear-gradient(180deg, #0d1018 0%, #070b10 70%);
-      border-right: 1px solid rgba(0,212,232,0.18);
-      box-shadow: 4px 0 30px rgba(0,212,232,0.05);
-      display: flex;
-      flex-direction: column;
-      padding: 2.5rem 1.75rem;
-      overflow: hidden;
-      z-index: 100;
-    }
-
-    /* dot-grid texture */
-    .sidebar::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: radial-gradient(circle, rgba(0,212,232,0.04) 1px, transparent 1px);
-      background-size: 22px 22px;
-      pointer-events: none;
-    }
-
-    /* scanlines texture */
-    .sidebar::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 3px,
-        rgba(0,212,232,0.012) 3px,
-        rgba(0,212,232,0.012) 4px
-      );
-      pointer-events: none;
-    }
-
-    .sidebar-inner {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-    }
-
-    .site-title {
-      font-family: var(--font-head);
-      font-weight: 700;
-      font-size: 1.15rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--cyan);
-      text-shadow: var(--glow-sm);
-      line-height: 1.25;
-      margin-bottom: 2.5rem;
-      display: block;
-    }
-
-    nav {
-      margin: 0 -1.75rem;
-    }
-
-    nav a {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 0.6rem 1.75rem;
-      font-size: 0.8rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: rgba(221,232,245,0.6);
-      border-left: 2px solid transparent;
-      transition: all var(--transition);
-    }
-    nav a:hover {
-      color: var(--cyan);
-      background: rgba(0,212,232,0.06);
-      border-left-color: var(--cyan);
-      text-shadow: var(--glow-sm);
-    }
-    nav a svg {
-      width: 0.9em;
-      height: 0.9em;
-      flex-shrink: 0;
-      opacity: 0.65;
-      transition: opacity var(--transition);
-    }
-    nav a:hover svg { opacity: 1; }
-
-    .sidebar-desc {
-      margin-top: auto;
-      padding-top: 1.5rem;
-      border-top: 1px solid var(--border);
-      font-size: 0.72rem;
-      letter-spacing: 0.04em;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-    .sidebar-desc::before {
-      content: '// ';
-      color: var(--green);
-      font-family: var(--font-mono);
-    }
-
-    /* External / social links */
-    .external-links {
-      display: flex;
-      gap: 0.5rem;
-      margin-top: 1.25rem;
-      margin-bottom: 0.25rem;
-      flex-wrap: wrap;
-    }
-    .external-links a {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-size: 0.75rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      transition: color var(--transition);
-    }
-    .external-links a:hover {
-      color: var(--cyan);
-      text-shadow: none;
-    }
-    .external-links svg {
-      width: 0.85em;
-      height: 0.85em;
-    }
-
-    /* ── Main content ───────────────────────────── */
-    .main {
-      margin-left: var(--sidebar-w);
-      flex: 1;
-      padding: 3.5rem 4rem;
-      max-width: 820px;
-    }
-
-    /* ── Bio section ───────────────────────────── */
-    .bio-grid {
-      display: grid;
-      grid-template-columns: 1fr 240px;
-      gap: 3rem;
-      align-items: start;
-    }
-
-    .status-line {
-      font-size: 0.72rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .status-dot {
-      display: inline-block;
-      width: 0.45em;
-      height: 0.45em;
-      border-radius: 50%;
-      background: var(--green);
-      box-shadow: 0 0 6px var(--green), 0 0 12px rgba(57,255,20,0.4);
-      flex-shrink: 0;
-      animation: pulse 2.5s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { box-shadow: 0 0 4px var(--green), 0 0 8px rgba(57,255,20,0.4); }
-      50%       { box-shadow: 0 0 10px var(--green), 0 0 20px rgba(57,255,20,0.5); }
-    }
-
-    .bio-text p {
-      margin-bottom: 1.2rem;
-      font-size: 1rem;
-    }
-    .bio-text p:last-child { margin-bottom: 0; }
-
-    .research-tags {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--cyan);
-      opacity: 0.8;
-      margin-top: 1.75rem;
-      line-height: 1.9;
-    }
-
-    .profile-photo {
-      width: 100%;
-      max-width: 240px;
-      border-radius: 4px;
-      border: 1px solid rgba(0,212,232,0.3);
-      box-shadow: var(--glow-md), 0 8px 32px rgba(0,0,0,0.6);
-      filter: contrast(1.05) brightness(0.95) saturate(0.88);
-      transition: box-shadow 0.4s ease, filter 0.4s ease;
-      display: block;
-    }
-    .profile-photo:hover {
-      box-shadow: 0 0 20px rgba(0,212,232,0.5), 0 0 60px rgba(0,212,232,0.2), 0 8px 32px rgba(0,0,0,0.6);
-      filter: contrast(1.08) brightness(1.0) saturate(1.0);
-    }
-
-    /* ── Mobile ─────────────────────────────────── */
-    @media (max-width: 900px) {
-      .sidebar {
-        position: static;
-        width: 100%;
-        height: auto;
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-items: center;
-        padding: 1.25rem 1.5rem;
-        border-right: none;
-        border-bottom: 1px solid rgba(0,212,232,0.18);
-        gap: 1rem;
-      }
-      .site-title { margin-bottom: 0; }
-      nav { margin: 0; display: flex; flex-wrap: wrap; gap: 0.25rem; }
-      nav a { padding: 0.4rem 0.75rem; border-left: none; border-bottom: 2px solid transparent; }
-      nav a:hover { border-left-color: transparent; border-bottom-color: var(--cyan); }
-      .sidebar-desc { display: none; }
-      .external-links { margin: 0; }
-      .layout { flex-direction: column; }
-      .main { margin-left: 0; padding: 2rem 1.5rem; }
-    }
-
-    @media (max-width: 600px) {
-      .bio-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-      .profile-photo {
-        max-width: 160px;
-        margin: 0 auto;
-      }
-    }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bhargav D Sanketi, PhD</title>
+  <meta name="description" content="Bhargav D Sanketi studies tissue state. How tissues build themselves. How they break. How to rewrite them.">
+  <link rel="canonical" href="https://bhargavsanketi.github.io/">
+  <meta name="theme-color" content="#08090b">
+  <meta name="color-scheme" content="dark">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Bhargav D Sanketi">
+  <meta property="og:title" content="Bhargav D Sanketi, PhD">
+  <meta property="og:description" content="Bhargav D Sanketi studies tissue state. How tissues build themselves. How they break. How to rewrite them.">
+  <meta property="og:url" content="https://bhargavsanketi.github.io/">
+  <meta property="og:image" content="https://bhargavsanketi.github.io/assets/img/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Bhargav D Sanketi">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:creator" content="@BSanketi">
+  <meta name="twitter:title" content="Bhargav D Sanketi, PhD">
+  <meta name="twitter:description" content="Bhargav D Sanketi studies tissue state. How tissues build themselves. How they break. How to rewrite them.">
+  <meta name="twitter:image" content="https://bhargavsanketi.github.io/assets/img/og.png">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="/assets/fonts/newsreader-opsz.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/source-sans-3.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Bhargav D Sanketi","honorificSuffix":"PhD","url":"https://bhargavsanketi.github.io/","image":"https://bhargavsanketi.github.io/assets/img/portrait.jpg","sameAs":["https://www.linkedin.com/in/bhargavdsanketi","https://twitter.com/BSanketi"],"alumniOf":{"@type":"CollegeOrUniversity","name":"Cornell University"}}</script>
 </head>
 <body>
-<div class="layout">
-
-  <!-- Sidebar -->
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-      <a href="/" class="site-title">Bhargav D<br>Sanketi</a>
-
-      <nav>
-        <a href="/">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-          Home
-        </a>
-        <a href="/sanketi_cv.pdf" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-          CV
-        </a>
-      </nav>
-
-      <div class="external-links">
-        <a href="mailto:bhargav.d.sanketi@gmail.com" title="Email">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          Mail
-        </a>
-        <a href="https://twitter.com/BSanketi" target="_blank" rel="noopener" title="Twitter">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
-          Twitter
-        </a>
-      </div>
-
-      <div class="sidebar-desc">Senior Scientist · Altos Labs · Longevity &amp; Cellular Reprogramming</div>
+  <a class="skip" href="#main">Skip to content</a>
+  <nav class="nav" aria-label="Site">
+    <div class="nav__inner">
+      <a class="nav__home" href="/" aria-current="page">Bhargav D Sanketi</a>
+      <ul>
+        <li><a href="/#work">Work</a></li>
+        <li><a href="/papers.html">Papers</a></li>
+      </ul>
     </div>
-  </aside>
+  </nav>
 
-  <!-- Main -->
-  <main class="main">
-    <div class="bio-grid">
-      <div class="bio-text">
-        <p class="status-line">
-          <span class="status-dot"></span>
-          Currently active &mdash; Altos Labs, San Diego
-        </p>
+  <main id="main" class="wrap">
+    <header class="masthead">
+      <picture>
+        <source type="image/webp" srcset="/assets/img/portrait.webp">
+        <img class="portrait" src="/assets/img/portrait.jpg" width="104" height="104" alt="Portrait of Bhargav D Sanketi">
+      </picture>
+      <h1 class="name">Bhargav D Sanketi<span class="name__suffix">, PhD</span></h1>
+      <p class="tagline">How tissues build themselves. How they break. How to rewrite them.</p>
+      <ul class="contact">
+        <li><a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#98;&#104;&#97;&#114;&#103;&#97;&#118;&#46;&#100;&#46;&#115;&#97;&#110;&#107;&#101;&#116;&#105;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;" aria-label="Email"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2.75" y="5" width="18.5" height="14" rx="1.5"/><path d="M3.5 6.25 12 12.75l8.5-6.5"/></svg></a></li>
+        <li><a href="https://www.linkedin.com/in/bhargavdsanketi" aria-label="LinkedIn" rel="me"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true" focusable="false"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></li>
+        <li><a href="https://twitter.com/BSanketi" aria-label="X, @BSanketi" rel="me"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true" focusable="false"><path d="M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.56h3.182l5.965 8.532.929 1.329 7.754 11.09h-3.182z"/></svg></a></li>
+      </ul>
+    </header>
 
-        <p>I am a senior scientist at <a href="http://altoslabs.com/" target="_blank" rel="noopener">Altos Labs</a>, where I study how aging and fibrosis erode tissue homeostasis &mdash; and explore cellular reprogramming as a strategy to reverse that decline.</p>
-
-        <p>I hold a Ph.D. in Cell Biology from Cornell University and an undergraduate degree in Biotechnology Engineering from RV College of Engineering, India.</p>
-
-        <p>I am drawn to the systems-level precision with which living organisms are built: the molecular programs that establish structure, maintain function, and eventually fail. My work asks whether those programs can be read, interrupted, and rewritten.</p>
-
-        <p class="research-tags">
-          aging &nbsp;&middot;&nbsp; fibrosis &nbsp;&middot;&nbsp; tissue homeostasis<br>
-          cellular reprogramming &nbsp;&middot;&nbsp; intestinal morphogenesis
-        </p>
+    <section id="work" class="opening" aria-label="Overview">
+      <div class="prose">
+        <p class="lede">I study tissue state.</p>
+        <p>Tissues are not fixed by their genes. They move between states to get things done. They build during development. They repair after injury. They drift in disease and age.</p>
+        <p>Those shifts run on mechanics, signaling, transcription, metabolism, and chromatin. They set whether a tissue builds itself up or breaks itself down.</p>
+        <p>I have spent ten years learning to read those decisions and rewrite them. I read tissue state with single cell and spatial genomics, lineage tracing, and imaging. I rewrite it with protein, gene, and cell based tools.</p>
+        <p class="coda">The circuits that build an organ can be redeployed to restore it.</p>
       </div>
+    </section>
 
-      <div>
-        <img src="sanketi_photo.jpg" alt="Bhargav Sanketi" class="profile-photo">
+    <section class="chapter" id="building" aria-labelledby="building-title">
+      <div class="reveal">
+        <p class="label"><span>Cornell</span><span>2017 to 2023</span></p>
+        <h2 class="chapter__title" id="building-title">Building tissues</h2>
       </div>
-    </div>
+      <div class="prose reveal">
+        <p class="opener">I asked how the gut gets its shape.</p>
+        <p>The mammalian intestine loops and layers itself early, and when that goes wrong it causes congenital malformation and metabolic disease. We built tools to measure and move mechanical forces inside a living embryo. We found that rotation starts when local mechanical feedback amplifies the body plan. An organ can begin to build itself from a local source of asymmetry.</p>
+        <p>Then we built a single cell atlas of the developing intestine and traced the origin of its fat absorption machinery. Villus myofibroblasts turned out to be the progenitors of gut lymphatic musculature, in the embryo and in the adult.</p>
+      </div>
+      <p class="pull reveal">Developmental programs are modular. They get reused far beyond the organ that first deploys them.</p>
+      
+      <div class="papers reveal">
+        <h3 class="papers__head">Papers and preprints</h3>
+        <ol class="cites">
+          <li>
+            <span class="cite__title">Morphogenesis of the vertebrate intestine: from form to function</span>
+            <span class="cite__meta"><strong>Sanketi</strong>, Huang, Kurpios. <span class="cite__venue">Annual Review of Cell and Developmental Biology</span>, <span class="tnum">2025</span>. <a class="cite__doi" href="https://doi.org/10.1146/annurev-cellbio-101123-044600">doi:10.1146/annurev-cellbio-101123-044600</a></span>
+          </li>
+          <li>
+            <span class="cite__title">A non-canonical role for Notch3 in building the intestinal lymphatic niche</span>
+            <span class="cite__meta">Huang, <strong>Sanketi</strong>, Mantri, et al. <span class="cite__venue">bioRxiv</span>, <span class="tnum">2026</span>. <a class="cite__doi" href="https://doi.org/10.64898/2026.08.13.742813">doi:10.64898/2026.08.13.742813</a></span>
+          </li>
+          <li>
+            <span class="cite__title">Villus myofibroblasts are developmental and adult progenitors of mammalian gut lymphatic musculature</span>
+            <span class="cite__meta"><strong>Sanketi</strong>, Mantri, Huang, et al. <span class="cite__venue">Developmental Cell</span>, <span class="tnum">2024</span>. <a class="cite__doi" href="https://doi.org/10.1016/j.devcel.2024.03.005">doi:10.1016/j.devcel.2024.03.005</a></span>
+          </li>
+          <li>
+            <span class="cite__title">Pitx2 patterns an accelerator-brake mechanical feedback through latent TGFβ to rotate the gut</span>
+            <span class="cite__meta"><strong>Sanketi</strong>, Zuela-Sopilniak, Bundschuh, et al. <span class="cite__venue">Science</span>, <span class="tnum">2022</span>. <a class="cite__doi" href="https://doi.org/10.1126/science.abl3921">doi:10.1126/science.abl3921</a></span>
+          </li>
+          <li>
+            <span class="cite__title">The asymmetric Pitx2 gene regulates gut muscular-lacteal development and protects against fatty liver disease</span>
+            <span class="cite__meta">Hu, Mahadevan, Elysee, Choi, Souchet, Bae, Taboada, <strong>Sanketi</strong>, et al. <span class="cite__venue">Cell Reports</span>, <span class="tnum">2021</span>. <a class="cite__doi" href="https://doi.org/10.1016/j.celrep.2021.110030">doi:10.1016/j.celrep.2021.110030</a></span>
+          </li>
+        </ol>
+      </div>
+      <div class="papers reveal">
+        <h3 class="papers__head">In preparation</h3>
+        <ul class="cites cites--prep">
+          <li><span class="cite__title">Spatiotemporal reconstruction of intestinal lymphatic heterogeneity</span></li>
+          <li><span class="cite__title">Umbilical origin of the ventral body wall</span></li>
+        </ul>
+      </div>
+      
+      <figure class="figure reveal">
+        <div class="figure__frame">
+          <picture>
+            <source type="image/webp" srcset="/assets/media/sanketi-2022-science.webp">
+            <img src="/assets/media/sanketi-2022-science.png" width="1280" height="840" alt="Heat maps of tissue stiffness in the dorsal mesentery of three chick embryos at stage 18. The left side reads stiffer than the right." loading="lazy" decoding="async">
+          </picture>
+        </div>
+        <figcaption>The left side of the dorsal mesentery stiffens before the gut begins to tilt. <span class="figure__credit">Sanketi et al. (2022)</span></figcaption>
+      </figure>
+      <figure class="figure reveal">
+        <div class="figure__frame">
+          <video class="js-loop" muted loop playsinline preload="metadata" poster="/assets/media/sanketi-2024-dev-cell-poster.jpg" width="640" height="480" aria-label="Three dimensional rotation of a single intestinal villus. Its central lymphatic vessel is wrapped in smooth muscle.">
+            <source src="/assets/media/sanketi-2024-dev-cell.mp4" type="video/mp4">
+          </video>
+          <button class="play" type="button" hidden>Play</button>
+        </div>
+        <figcaption>A single intestinal villus turning in three dimensions, its lymphatic vessel wrapped in the smooth muscle that pumps it. <span class="figure__credit">Sanketi et al. (2024)</span></figcaption>
+      </figure>
+    </section>
+
+    <section class="chapter" id="breaking" aria-labelledby="breaking-title">
+      <div class="reveal">
+        <p class="label"><span>Altos Labs</span><span>2023 to 2026</span></p>
+        <h2 class="chapter__title" id="breaking-title">Breaking tissues</h2>
+      </div>
+      <div class="prose reveal">
+        <p class="opener">I turned to how tissues fail.</p>
+        <p>Across more than forty human age associated diseases, cells near injury drift toward a mesenchymal state. We defined that drift and showed partial reprogramming reverses it.</p>
+        <p>Reprogramming rejuvenates cells, but left running it erases their identity and forms tumors. We separated the two. The chromatin activity that rejuvenates can be uncoupled from the identity loss. That makes epigenetic reprogramming safer to pursue as a medicine.</p>
+        <p>We also showed that cell identity factors reverse state drift and restore function in aging and diseased muscle and liver in live animals.</p>
+      </div>
+      <p class="pull reveal">Fibrosis, cancer, and aging are miscued state transitions. The circuitry that builds an organ can be redirected to restore one.</p>
+      
+      <div class="papers reveal">
+        <h3 class="papers__head">Papers and preprints</h3>
+        <ol class="cites">
+          <li>
+            <span class="cite__title">Prevalent mesenchymal drift in aging and disease is reversed by partial reprogramming</span>
+            <span class="cite__meta">Lu, Tu, Li, Weng, <strong>Sanketi</strong>, et al. <span class="cite__venue">Cell</span>, <span class="tnum">2025</span>. <a class="cite__doi" href="https://doi.org/10.1016/j.cell.2025.07.031">doi:10.1016/j.cell.2025.07.031</a></span>
+          </li>
+          <li>
+            <span class="cite__title">Visualizing the epigenetic landscape of aging and cellular reprogramming: optimized ATAC-see for cells and tissues</span>
+            <span class="cite__meta">Kirkland, Castro, Yang, <strong>Sanketi</strong>, et al. <span class="cite__venue">Journal of Cell Science</span>, <span class="tnum">2026</span>. <a class="cite__doi" href="https://doi.org/10.1242/jcs.264943">doi:10.1242/jcs.264943</a></span>
+          </li>
+        </ol>
+      </div>
+      <div class="papers reveal">
+        <h3 class="papers__head">In preparation</h3>
+        <ul class="cites cites--prep">
+          <li><span class="cite__title">Uncoupling chromatin rejuvenation from dedifferentiation during partial reprogramming</span></li>
+          <li><span class="cite__title">Respecifying cell identity in the liver</span></li>
+          <li><span class="cite__title">Respecifying cell identity in muscle</span></li>
+        </ul>
+      </div>
+      
+      <figure class="figure reveal">
+        <div class="figure__frame">
+          <picture>
+            <source type="image/webp" srcset="/assets/media/lu-2025-cell.webp">
+            <img src="/assets/media/lu-2025-cell.jpg" width="1280" height="728" alt="Diagram of the human body naming the diseases that show mesenchymal drift. They span the brain, eye, lungs, heart, blood vessels, liver, kidney, colon, skin, and cancer." loading="lazy" decoding="async">
+          </picture>
+        </div>
+        <figcaption>The same drift toward a mesenchymal state turns up in more than forty human diseases, across every major organ. <span class="figure__credit">Lu et al. (2025)</span></figcaption>
+      </figure>
+    </section>
+
+    <section class="chapter" id="enhancing" aria-labelledby="enhancing-title">
+      <div class="reveal">
+        <p class="label"><span>Co-founder at stealth</span><span>Now</span></p>
+        <h2 class="chapter__title" id="enhancing-title">Enhancing tissues</h2>
+      </div>
+      <p class="pull pull--lead reveal">The secretome is an especially tractable entry point into tissue state, and the one that translates most directly to the clinic.</p>
+    </section>
+
+    <section class="closing" aria-labelledby="recognition-title">
+      <h2 id="recognition-title">Recognition</h2>
+      <ul class="honours reveal">
+        <li>Rising Star in Bioengineering, Princeton, <span class="tnum">2023</span></li>
+        <li>Altos Above and Beyond Award, <span class="tnum">2024</span></li>
+        <li>North American National 3MT Winner, Council of Graduate Schools, <span class="tnum">2022</span></li>
+        <li>Birnstiel Award honourable mention, IMP Austria, <span class="tnum">2023</span></li>
+        <li>Presidential Life Science Fellowship, Cornell, <span class="tnum">2017</span></li>
+      </ul>
+      <div class="service reveal">
+        <p>Co-chair of the Gordon Research Seminar on Vascular Cell Biology in <span class="tnum">2025</span>.</p>
+        <p>Taught and mentored at Cornell and Ithaca College, including through the HHMI CHAMPS program.</p>
+      </div>
+    </section>
   </main>
-
-</div>
+  <script>
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var io = 'IntersectionObserver' in window;
+  var items = document.querySelectorAll('.reveal');
+  if (!reduce && io) {
+    var r = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-in'); r.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    items.forEach(function (el) { r.observe(el); });
+  } else {
+    items.forEach(function (el) { el.classList.add('is-in'); });
+  }
+  document.querySelectorAll('video.js-loop').forEach(function (v) {
+    var btn = v.parentNode.querySelector('.play');
+    if (reduce || !io) {
+      btn.hidden = false;
+      btn.addEventListener('click', function () {
+        if (v.paused) { v.play(); btn.textContent = 'Pause'; } else { v.pause(); btn.textContent = 'Play'; }
+      });
+      return;
+    }
+    new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (e.isIntersecting) { var p = v.play(); if (p && p.catch) p.catch(function () { btn.hidden = false; }); }
+        else { v.pause(); }
+      });
+    }, { threshold: 0.25 }).observe(v);
+    btn.addEventListener('click', function () { v.play(); btn.hidden = true; });
+  });
+})();
+</script>
 </body>
 </html>

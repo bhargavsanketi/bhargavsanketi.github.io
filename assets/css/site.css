@@ -218,7 +218,8 @@ a:hover { color: var(--fg); text-decoration-color: currentColor; }
 }
 .contact a:hover { color: var(--accent); }
 .contact svg { width: 22px; height: 22px; }
-.contact + .contact { margin-top: 0; }
+.contact a[aria-label^="LinkedIn"] svg,
+.contact a[aria-label^="X"] svg { width: 20px; height: 20px; }
 
 /* Prose */
 .prose { max-width: var(--measure); }
@@ -233,7 +234,15 @@ a:hover { color: var(--fg); text-decoration-color: currentColor; }
   margin-bottom: 1.2em;
 }
 .opening { padding-bottom: var(--space-xl); }
-.opening .prose p:not(.lede) { color: var(--fg-2); }
+.opening .prose p:not(.lede):not(.coda) { color: var(--fg-2); }
+.coda {
+  margin-top: 1.6em !important;
+  font-family: var(--serif);
+  font-size: var(--step-1);
+  font-weight: 380;
+  font-variation-settings: "opsz" 24;
+  line-height: 1.4;
+}
 
 /* Chapters */
 .chapter {
@@ -328,9 +337,10 @@ a:hover { color: var(--fg); text-decoration-color: currentColor; }
   line-height: 1.5;
   color: var(--fg-3);
 }
+.figure__credit { color: var(--fg-2); }
 .play {
   position: absolute;
-  left: 1rem;
+  right: 1rem;
   bottom: 1rem;
   padding: 0.45rem 0.8rem;
   background: var(--bg);
@@ -363,16 +373,6 @@ a:hover { color: var(--fg); text-decoration-color: currentColor; }
 .honours .tnum { color: var(--fg-3); }
 .service { margin-top: var(--space-m); color: var(--fg-2); max-width: var(--measure); }
 .service p + p { margin-top: 0.5rem; }
-
-/* Footer */
-.foot {
-  border-top: 1px solid var(--fg-rule);
-  padding: var(--space-m) 0 var(--space-l);
-  font-size: var(--step--2);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--fg-3);
-}
 
 /* Publications page */
 .pubs-head { padding: var(--space-l) 0 var(--space-m); }
