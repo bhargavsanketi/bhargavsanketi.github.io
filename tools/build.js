@@ -97,6 +97,10 @@ function figure(m) {
       </figure>`;
 }
 
+// Logos are inlined so they take the text colour.
+const logo = (file, label, cls) => fs.readFileSync(path.join(root, 'assets/img/logos', file), 'utf8').trim()
+  .replace('<svg ', `<svg class="logo ${cls}" role="img" aria-label="${esc(label)}" focusable="false" `);
+
 const figures = (chapter) => data.media.filter((m) => m.chapter === chapter).map(figure).join('');
 
 const ICONS = {
@@ -234,7 +238,7 @@ const home = `${head({
 
     <section class="chapter" id="building" aria-labelledby="building-title">
       <div class="reveal">
-        <p class="label"><span>Cornell</span><span>2017 to 2023</span></p>
+        <p class="label label--logo">${logo('cornell.svg', 'Cornell University', 'logo--cornell')}<span>2017 to 2023</span></p>
         <h2 class="chapter__title" id="building-title">Building tissues</h2>
       </div>
       <div class="prose reveal">
@@ -249,7 +253,7 @@ const home = `${head({
 
     <section class="chapter" id="breaking" aria-labelledby="breaking-title">
       <div class="reveal">
-        <p class="label"><span>Altos Labs</span><span>2023 to 2026</span></p>
+        <p class="label label--logo">${logo('altos-labs.svg', 'Altos Labs', 'logo--altos')}<span>2023 to 2026</span></p>
         <h2 class="chapter__title" id="breaking-title">Breaking tissues</h2>
       </div>
       <div class="prose reveal">
