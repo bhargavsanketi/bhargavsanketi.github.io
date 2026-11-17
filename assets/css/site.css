@@ -287,9 +287,14 @@ a:hover { color: var(--fg); text-decoration-color: currentColor; }
   color: var(--fg-3);
   font-variant-numeric: tabular-nums lining-nums;
 }
-.label--logo { align-items: center; }
+.chapter__mark {
+  height: 3.25rem;
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 1.25rem;
+}
 .logo { display: block; color: rgb(var(--fg-rgb) / 0.72); width: auto; }
-.logo--cornell { height: 3rem; }
+.logo--cornell { height: 3.25rem; }
 .logo--altos { height: 1.375rem; }
 .chapter__title {
   margin-top: var(--space-s);
