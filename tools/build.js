@@ -207,9 +207,9 @@ const home = `${head({
     <header class="masthead">
       <picture>
         <source type="image/webp" srcset="/assets/img/portrait.webp">
-        <img class="portrait" src="/assets/img/portrait.jpg" width="104" height="104" alt="Portrait of Bhargav D Sanketi">
+        <img class="portrait" src="/assets/img/portrait.jpg" width="480" height="480" alt="Bhargav D Sanketi crouching in a field of orange poppies with his beagle">
       </picture>
-      <h1 class="name">${NAME}<span class="name__suffix">, PhD</span></h1>
+      <h1 class="name">Bhargav D <span class="nowrap">Sanketi<span class="name__suffix">, PhD</span></span></h1>
       <p class="tagline">How tissues build themselves. How they break. How to rewrite them.</p>
       <ul class="contact">
         <li><a href="${entities('mailto:' + EMAIL)}" aria-label="Email">${ICONS.email}</a></li>
